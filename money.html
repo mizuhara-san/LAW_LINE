@@ -1,0 +1,99 @@
+<!-- money.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Money & Property - LAW LINE</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = { theme: { extend: { fontFamily: { sans: ['Outfit', 'sans-serif'] }, colors: { primary: '#0D9488', accent: '#134E4A', dark: '#1e293b', light: '#f8fafc' } } } }
+    </script>
+</head>
+<body class="bg-light text-dark min-h-screen">
+    <!-- Header -->
+    <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-gray-200 shadow-sm">
+        <div class="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
+            <a href="index.html" class="flex items-center gap-4">
+                <div class="bg-primary p-3 rounded-xl">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="white" class="w-8 h-8">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 21v-8.25M15.75 21v-8.25M8.25 21v-8.25M3 9l9-6 9 6m-1.5 12V10.332A48.36 48.36 0 0012 9.75c-2.551 0-5.056.2-7.5.582V21M3 21h18M12 6.75h.008v.008H12V6.75z" />
+                    </svg>
+                </div>
+                <div>
+                    <h1 class="text-3xl font-bold text-primary">LAW LINE</h1>
+                    <p class="text-sm text-gray-600 -mt-1">Clarity over legal confusion.</p>
+                </div>
+            </a>
+            <a href="index.html" class="text-primary font-medium hover:underline">← Back to Home</a>
+        </div>
+    </header>
+
+    <!-- Theme Hero -->
+    <section class="py-16 bg-primary/10 text-center">
+        <div class="max-w-4xl mx-auto px-6">
+            <h2 class="text-4xl md:text-5xl font-bold mb-6">Money & Property</h2>
+            <p class="text-xl text-gray-700">Simple explanations of laws on loans, rent, property disputes, consumer rights, and financial issues.</p>
+        </div>
+    </section>
+
+    <!-- Explainers List -->
+    <section class="py-16 bg-white">
+        <div class="max-w-5xl mx-auto px-6 space-y-12">
+            <div class="border border-gray-300 rounded-2xl p-8 shadow-lg">
+                <h3 class="text-2xl font-bold mb-4">Landlord Not Returning Security Deposit?</h3>
+                <p class="text-gray-700 mb-6">Tenants have rights under state rent control laws and model tenancy acts.</p>
+                <ul class="list-disc pl-6 space-y-2 text-gray-700">
+                    <li>Send written notice demanding refund within reasonable time (usually 15-30 days).</li>
+                    <li>File complaint with Rent Controller or civil court.</li>
+                    <li>Claim interest if delayed unreasonably.</li>
+                </ul>
+                <p class="mt-6 text-sm text-gray-500">Reference: <a href="https://www.indiacode.nic.in" target="_blank" class="text-primary underline">Model Tenancy Act & State Rent Laws</a></p>
+            </div>
+
+            <div class="border border-gray-300 rounded-2xl p-8 shadow-lg">
+                <h3 class="text-2xl font-bold mb-4">Cheque Bounce</h3>
+                <p class="text-gray-700 mb-6">Bouncing of cheque is an offence under Negotiable Instruments Act.</p>
+                <ul class="list-disc pl-6 space-y-2 text-gray-700">
+                    <li>Send legal notice within 30 days of bounce.</li>
+                    <li>File complaint in court within 30 days of notice expiry.</li>
+                    <li>Accused can be punished with imprisonment or fine up to twice the amount.</li>
+                </ul>
+                <p class="mt-6 text-sm text-gray-500">Reference: <a href="https://www.indiacode.nic.in/handle/123456789/2266" target="_blank" class="text-primary underline">Section 138, Negotiable Instruments Act, 1881</a></p>
+            </div>
+
+            <div class="border border-gray-300 rounded-2xl p-8 shadow-lg">
+                <h3 class="text-2xl font-bold mb-4">Consumer Complaint</h3>
+                <p class="text-gray-700 mb-6">For defective goods or deficient services.</p>
+                <ul class="list-disc pl-6 space-y-2 text-gray-700">
+                    <li>File online at consumerhelpline.gov.in or e-daakhil.nic.in.</li>
+                    <li>Claim refund, replacement, or compensation.</li>
+                    <li>No court fee for claims up to ₹20 lakh.</li>
+                </ul>
+                <p class="mt-6 text-sm text-gray-500">Reference: <a href="https://www.indiacode.nic.in/handle/123456789/15475" target="_blank" class="text-primary underline">Consumer Protection Act, 2019</a></p>
+            </div>
+
+            <div class="border border-gray-300 rounded-2xl p-8 shadow-lg">
+                <h3 class="text-2xl font-bold mb-4">Property Dispute</h3>
+                <p class="text-gray-700 mb-6">Common issues include title disputes and partition.</p>
+                <ul class="list-disc pl-6 space-y-2 text-gray-700">
+                    <li>Check title documents and revenue records.</li>
+                    <li>File civil suit for declaration or injunction.</li>
+                    <li>Approach revenue authorities for mutation.</li>
+                </ul>
+                <p class="mt-6 text-sm text-gray-500">Reference: <a href="https://www.indiacode.nic.in" target="_blank" class="text-primary underline">Transfer of Property Act, 1882 & Specific Relief Act</a></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Disclaimer Footer -->
+    <footer class="bg-dark text-white py-12 text-center">
+        <div class="max-w-4xl mx-auto px-6">
+            <p class="text-lg font-semibold mb-4">⚠️ IMPORTANT DISCLAIMER</p>
+            <p>This platform provides legal information for awareness purposes only. It does not provide legal advice or replace a lawyer.</p>
+            <p class="mt-8 text-sm text-gray-400">© 2025 LAW LINE • Privacy-First • Verified Sources Only</p>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Family & Marriage - LAW LINE</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = { theme: { extend: { fontFamily: { sans: ['Outfit', 'sans-serif'] }, colors: { primary: '#0D9488', accent: '#134E4A', dark: '#1e293b', light: '#f8fafc' } } } }
+    </script>
+</head>
+<body class="bg-light text-dark min-h-screen">
+    <!-- Header -->
+    <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-gray-200 shadow-sm">
+        <div class="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
+            <a href="index.html" class="flex items-center gap-4">
+                <div class="bg-primary p-3 rounded-xl">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="white" class="w-8 h-8"> <!-- icon --> </svg>
+                </div>
+                <div>
+                    <h1 class="text-3xl font-bold text-primary">LAW LINE</h1>
+                    <p class="text-sm text-gray-600 -mt-1">Clarity over legal confusion.</p>
+                </div>
+            </a>
+            <a href="index.html" class="text-primary font-medium hover:underline">← Back to Home</a>
+        </div>
+    </header>
+
+    <!-- Theme Hero -->
+    <section class="py-16 bg-primary/10 text-center">
+        <div class="max-w-4xl mx-auto px-6">
+            <h2 class="text-4xl md:text-5xl font-bold mb-6">Family & Marriage</h2>
+            <p class="text-xl text-gray-700">Simple explanations of laws on marriage, divorce, maintenance, inheritance, and domestic issues.</p>
+        </div>
+    </section>
+
+    <!-- Explainers List -->
+    <section class="py-16 bg-white">
+        <div class="max-w-5xl mx-auto px-6 space-y-12">
+            <!-- Explainer 1 -->
+            <div class="border border-gray-300 rounded-2xl p-8 shadow-lg">
+                <h3 class="text-2xl font-bold mb-4">What is Domestic Violence?</h3>
+                <p class="text-gray-700 mb-6">Domestic violence includes physical, emotional, sexual, or economic abuse in a family or marriage.</p>
+                <ul class="list-disc pl-6 space-y-2 text-gray-700">
+                    <li>File a complaint at nearest police station.</li>
+                    <li>Approach a Protection Officer or Magistrate.</li>
+                    <li>Get protection order, residence order, or maintenance.</li>
+                </ul>
+                <p class="mt-6 text-sm text-gray-500">Reference: <a href="https://www.indiacode.nic.in/handle/123456789/2028" target="_blank" class="text-primary underline">Protection of Women from Domestic Violence Act, 2005</a></p>
+            </div>
+
+            <!-- Explainer 2 -->
+            <div class="border border-gray-300 rounded-2xl p-8 shadow-lg">
+                <h3 class="text-2xl font-bold mb-4">How to File for Divorce?</h3>
+                <p class="text-gray-700 mb-6">Divorce can be mutual consent or contested, governed by personal laws or Special Marriage Act.</p>
+                <ul class="list-disc pl-6 space-y-2 text-gray-700">
+                    <li>Mutual consent: Both agree → file joint petition.</li>
+                    <li>Contested: One party files on grounds like cruelty/adultery.</li>
+                    <li>Waiting period: 6-18 months depending on type.</li>
+                </ul>
+                <p class="mt-6 text-sm text-gray-500">Reference: <a href="https://www.indiacode.nic.in/handle/123456789/15476" target="_blank" class="text-primary underline">Hindu Marriage Act, 1955 (example)</a></p>
+            </div>
+
+            <!-- Add 3-4 more similar explainers here (e.g., Maintenance, Inheritance, Child Custody) -->
+        </div>
+    </section>
+
+    <!-- Disclaimer Footer -->
+    <footer class="bg-dark text-white py-12 text-center">
+        <div class="max-w-4xl mx-auto px-6">
+            <p class="text-lg font-semibold mb-4">⚠️ IMPORTANT DISCLAIMER</p>
+            <p>This platform provides legal information for awareness purposes only. It does not provide legal advice or replace a lawyer.</p>
+            <p class="mt-8 text-sm text-gray-400">© 2025 LAW LINE • Privacy-First • Verified Sources Only</p>
+        </div>
+    </footer>
+</body>
+</html>
