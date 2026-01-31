@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crimes & Violence - LAW LINE</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Outfit', 'sans-serif'] },
+                    colors: {
+                        primary: '#0D9488',
+                        accent: '#134E4A',
+                        dark: '#1e293b',
+                        light: '#f8fafc',
+                        'pro-blue': '#0f172a',
+                        'pro-gold': '#b45309',
+                    },
+                    backgroundImage: {
+                        // Darker, serious background for Crimes theme
+                        'hero-crime': "url('https://images.unsplash.com/photo-1453873419066-95622064fa93?q=80&w=2070&auto=format&fit=crop')",
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .glass { background: rgba(255, 255, 255, 0.15); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.2); }
+        .glass-light { background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(12px); }
+        .fade-in { animation: fadeIn 0.6s ease-out forwards; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
+</head>
+<body class="bg-light text-dark min-h-screen">
+
+    <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-gray-200 shadow-sm">
+        <div class="max-w-7xl mx-auto px-6 py-3 flex items-center">
+            
+            <div class="flex-1 flex justify-start">
+                <nav class="hidden md:flex items-center gap-6 text-gray-700 font-medium text-sm lg:text-base">
+                    <a href="index.html" class="hover:text-primary transition">Home</a>
+                    <a href="index.html#themes" class="hover:text-primary transition">Themes</a>
+                    <a href="index.html#users" class="hover:text-primary transition">By User</a>
+                    <a href="index.html#contact" class="hover:text-primary transition">Contact</a>
+                </nav>
+            </div>
+
+            <div class="shrink-0 flex items-center gap-3 cursor-pointer" onclick="window.location.href='index.html'">
+                <img src="logo.png" alt="LAW LINE Logo" class="w-14 h-14 md:w-16 md:h-16 object-contain">
+                <div>
+                    <h1 class="text-2xl md:text-3xl font-bold text-primary leading-tight">LAW LINE</h1>
+                    <p class="text-[10px] md:text-xs text-gray-600 tracking-wide">Clarity over legal confusion.</p>
+                </div>
+            </div>
+
+            <div class="flex-1 flex justify-end" id="loginContainer">
+                <button id="openLoginBtn" class="bg-primary text-white px-5 py-2 rounded-full font-bold hover:bg-accent transition shadow-lg text-sm">Sign In</button>
+            </div>
+        </div>
+    </header>
+
+    <section class="relative py-24 bg-hero-crime bg-cover bg-center text-center overflow-hidden">
+        <div class="absolute inset-0 bg-dark/80"></div>
+        <div class="relative z-10 max-w-5xl mx-auto px-6">
+            <h2 class="text-5xl md:text-6xl font-bold text-white mb-6">Crimes & Violence</h2>
+            <p class="text-xl text-gray-200 mb-8 max-w-3xl mx-auto">
+                Know your rights when facing criminal activities. From filing an FIR to understanding bail and protection orders.
+            </p>
+        </div>
+    </section>
+
+    <section class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <h3 class="text-3xl font-bold text-gray-800 mb-10 text-center">Common Legal Issues</h3>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <div class="bg-white border border-gray-100 rounded-2xl p-8 shadow-lg hover:shadow-xl transition group">
+                    <div class="w-14 h-14 bg-red-50 rounded-full flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+                    </div>
+                    <h4 class="text-xl font-bold mb-3 group-hover:text-primary transition">Filing an FIR</h4>
+                    <p class="text-gray-600 mb-4">Learn about Zero FIR, how to file a complaint, and what to do if police refuse to register it.</p>
+                </div>
+
+                <div class="bg-white border border-gray-100 rounded-2xl p-8 shadow-lg hover:shadow-xl transition group">
+                    <div class="w-14 h-14 bg-blue-50 rounded-full flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>
+                    </div>
+                    <h4 class="text-xl font-bold mb-3 group-hover:text-primary transition">Cyber Crime & Fraud</h4>
+                    <p class="text-gray-600 mb-4">Reporting online scams, financial fraud, identity theft, and harassment on social media (1930 Helpline).</p>
+                </div>
+
+                <div class="bg-white border border-gray-100 rounded-2xl p-8 shadow-lg hover:shadow-xl transition group">
+                    <div class="w-14 h-14 bg-purple-50 rounded-full flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+                    </div>
+                    <h4 class="text-xl font-bold mb-3 group-hover:text-primary transition">Domestic Violence</h4>
+                    <p class="text-gray-600 mb-4">Protection of Women from Domestic Violence Act (PWDVA), helpline numbers, and protection orders.</p>
+                </div>
+
+                <div class="bg-white border border-gray-100 rounded-2xl p-8 shadow-lg hover:shadow-xl transition group">
+                    <div class="w-14 h-14 bg-orange-50 rounded-full flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+                    </div>
+                    <h4 class="text-xl font-bold mb-3 group-hover:text-primary transition">Arrest & Bail Rights</h4>
+                    <p class="text-gray-600 mb-4">DK Basu guidelines, right to legal counsel, 24-hour magistrate production, and types of bail.</p>
+                </div>
+
+                <div class="bg-white border border-gray-100 rounded-2xl p-8 shadow-lg hover:shadow-xl transition group">
+                    <div class="w-14 h-14 bg-pink-50 rounded-full flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8 text-pink-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636"/></svg>
+                    </div>
+                    <h4 class="text-xl font-bold mb-3 group-hover:text-primary transition">Sexual Harassment</h4>
+                    <p class="text-gray-600 mb-4">POSH Act (Workplace harassment), POCSO Act (Protection of Children), and filing complaints.</p>
+                </div>
+
+                <div class="bg-white border border-gray-100 rounded-2xl p-8 shadow-lg hover:shadow-xl transition group">
+                    <div class="w-14 h-14 bg-green-50 rounded-full flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1"/></svg>
+                    </div>
+                    <h4 class="text-xl font-bold mb-3 group-hover:text-primary transition">Theft & Cheating</h4>
+                    <p class="text-gray-600 mb-4">IPC Section 420 (Cheating), Section 378 (Theft), and property recovery procedures.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-dark text-white py-16 text-center">
+        <p class="text-3xl font-bold mb-4">LAW LINE</p>
+        <p class="text-sm text-gray-400">© 2026 LAW LINE • Privacy-First • Verified Sources Only</p>
+    </footer>
+
+    <div id="loginModalBg" class="fixed inset-0 bg-black/60 z-50 hidden flex items-center justify-center backdrop-blur-sm">
+        <div class="bg-white rounded-2xl p-8 max-w-md w-full relative fade-in">
+            <button id="closeModalBtn" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600 text-2xl">✕</button>
+            <h3 class="text-2xl font-bold text-gray-900 mb-6 text-center">Join Law-Line</h3>
+            <div class="flex gap-4 mb-6 border-b border-gray-100">
+                <button id="tabEmail" class="flex-1 pb-2 border-b-2 border-primary font-bold text-primary transition">Email</button>
+                <button id="tabPhone" class="flex-1 pb-2 border-b-2 border-transparent text-gray-400 font-bold hover:text-gray-600 transition">Phone</button>
+            </div>
+            <div id="emailSection" class="space-y-4">
+                <input type="email" id="authEmail" placeholder="Email Address" class="w-full p-3 border border-gray-200 rounded-xl outline-none focus:border-primary">
+                <input type="password" id="authPassword" placeholder="Password" class="w-full p-3 border border-gray-200 rounded-xl outline-none focus:border-primary">
+                <button id="emailAuthBtn" class="w-full bg-primary text-white py-3 rounded-xl font-bold hover:bg-accent transition">Login / Sign Up</button>
+            </div>
+            <div id="phoneSection" class="hidden space-y-4">
+                <div id="recaptcha-container"></div>
+                <input type="tel" id="phoneNumber" placeholder="+91 9876543210" class="w-full p-3 border border-gray-200 rounded-xl outline-none focus:border-primary">
+                <button id="sendOtpBtn" class="w-full bg-primary text-white py-3 rounded-xl font-bold hover:bg-accent transition">Send OTP</button>
+                <div id="otpBox" class="hidden space-y-4">
+                    <input type="text" id="otpCode" placeholder="Enter 6-digit OTP" class="w-full p-3 border border-gray-200 rounded-xl outline-none focus:border-primary">
+                    <button id="verifyOtpBtn" class="w-full bg-accent text-white py-3 rounded-xl font-bold hover:bg-green-700 transition">Verify & Login</button>
+                </div>
+            </div>
+            <div class="mt-6 text-center">
+                <div class="flex items-center gap-2 my-4 text-gray-400"><hr class="flex-grow"><span>OR</span><hr class="flex-grow"></div>
+                <button id="googleSignInBtn" class="w-full flex items-center justify-center gap-3 bg-white border-2 border-gray-200 text-gray-700 font-semibold py-3 px-4 rounded-xl hover:bg-gray-50 transition">
+                    <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="Google" class="w-6 h-6">
+                    <span>Continue with Google</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="script.js"></script>
+</body>
+</html>

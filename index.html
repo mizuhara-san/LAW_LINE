@@ -36,23 +36,30 @@
 <body class="bg-light text-dark min-h-screen">
 
     <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-gray-200 shadow-sm">
-        <div class="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
-            <div class="flex items-center gap-5">
-                <img src="logo.png" alt="LAW LINE Logo" class="w-20 h-20 object-contain">
+        <div class="max-w-7xl mx-auto px-6 py-3 flex items-center">
+            
+            <div class="flex-1 flex justify-start">
+                <nav class="hidden md:flex items-center gap-6 text-gray-700 font-medium text-sm lg:text-base">
+                    <a href="index.html#themes" class="hover:text-primary transition">Themes</a>
+                    <a href="index.html#users" class="hover:text-primary transition">By User</a>
+                    
+                    <a href="about.html" class="hover:text-primary transition">About</a>
+                    <a href="contact.html" class="hover:text-primary transition">Contact</a>
+                </nav>
+            </div>
+
+            <div class="shrink-0 flex items-center gap-3 cursor-pointer" onclick="window.location.href='index.html'">
+                <img src="logo.png" alt="LAW LINE Logo" class="w-14 h-14 md:w-16 md:h-16 object-contain">
                 <div>
-                    <h1 class="text-3xl font-bold text-primary">LAW LINE</h1>
-                    <p class="text-sm text-gray-600">Clarity over legal confusion.</p>
+                    <h1 class="text-2xl md:text-3xl font-bold text-primary leading-tight">LAW LINE</h1>
+                    <p class="text-[10px] md:text-xs text-gray-600 tracking-wide">Clarity over legal confusion.</p>
                 </div>
             </div>
-            <nav class="hidden md:flex items-center gap-8 text-gray-700 font-medium">
-                <a href="#themes" class="hover:text-primary transition">Themes</a>
-                <a href="#users" class="hover:text-primary transition">By User</a>
-                <a href="#about" class="hover:text-primary transition">About</a>
-                <a href="#contact" class="hover:text-primary transition">Contact</a>
-            </nav>
-            <div id="loginContainer" class="text-sm">
-                <button id="openLoginBtn" class="bg-primary text-white px-5 py-2 rounded-full font-bold hover:bg-accent transition shadow-lg">Sign In</button>
+
+            <div class="flex-1 flex justify-end" id="loginContainer">
+                <button id="openLoginBtn" class="bg-primary text-white px-5 py-2 rounded-full font-bold hover:bg-accent transition shadow-lg text-sm">Sign In</button>
             </div>
+
         </div>
     </header>
 
