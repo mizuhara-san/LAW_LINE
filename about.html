@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - LegalEase</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = { theme: { extend: { fontFamily: { sans: ['Inter', 'sans-serif'], }, colors: { brand: { 900: '#1a1f71', 500: '#4f46e5', } } } } }
+    </script>
+</head>
+<body class="bg-slate-50 text-slate-800">
+
+    <nav class="bg-white sticky top-0 z-50 shadow-sm border-b border-gray-100">
+        <div class="container mx-auto px-6 h-20 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <a href="index.html" class="text-2xl font-bold text-brand-900 tracking-tight">⚖️ LegalEase</a>
+            </div>
+            <div class="hidden md:flex gap-6 text-sm font-medium text-gray-600">
+                <a href="index.html" class="hover:text-brand-800 transition">Home</a>
+                <a href="about.html" class="text-brand-500 font-bold">About Us</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container mx-auto px-6 py-12 max-w-4xl">
+        <h1 class="text-4xl font-bold text-brand-900 mb-6">About Our Mission</h1>
+        <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-200 prose prose-lg text-gray-600">
+            <p class="mb-4">LegalEase was born from a simple idea: <strong>Justice should be accessible to everyone, not just those who can afford lawyers.</strong></p>
+            <p>Our AI-powered platform helps Indian citizens understand their rights in seconds.</p>
+        </div>
+    </main>
+
+</body>
+</html>

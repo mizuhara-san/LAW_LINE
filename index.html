@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LegalEase | AI Legal Assistant</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Outfit', 'sans-serif'] },
+                    colors: {
+                        pro: { blue: '#0f172a', gold: '#b45309', }
+                    },
+                    backgroundImage: {
+                        'hero-pattern': "url('https://images.unsplash.com/photo-1589829545856-d10d557cf95f?q=80&w=2070&auto=format&fit=crop')",
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Glassmorphism Effect */
+        .glass {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .glass-dark {
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(15px);
+        }
+        .fade-in { animation: fadeIn 0.4s ease-out; }
+        @keyframes fadeIn { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
+    </style>
+</head>
+<body class="bg-pro-blue text-white font-sans h-screen overflow-hidden relative">
+
+    <nav class="absolute top-0 w-full z-50 px-8 py-6 flex justify-between items-center">
+        <div class="flex items-center gap-3">
+            <div class="bg-white/10 p-2 rounded-lg backdrop-blur-sm border border-white/20">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-pro-gold"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21v-8.25M15.75 21v-8.25M8.25 21v-8.25M3 9l9-6 9 6m-1.5 12V10.332A48.36 48.36 0 0012 9.75c-2.551 0-5.056.2-7.5.582V21M3 21h18M12 6.75h.008v.008H12V6.75z" /></svg>
+            </div>
+            <span class="text-2xl font-bold tracking-tight">LegalEase</span>
+        </div>
+        
+        <div class="hidden md:flex gap-8 text-sm font-medium text-gray-300">
+            <a href="index.html" class="text-white hover:text-pro-gold transition">Home</a>
+            <a href="about.html" class="hover:text-pro-gold transition">About Us</a>
+            <a href="resources.html" class="hover:text-pro-gold transition">Legal Resources</a>
+        </div>
+
+        <div id="loginContainer">
+            <button id="openLoginBtn" class="bg-white text-pro-blue px-5 py-2 rounded-full font-bold hover:bg-gray-100 transition shadow-lg">Sign In</button>
+        </div>
+    </nav>
+
+    <main class="relative h-full w-full bg-hero-pattern bg-cover bg-center flex flex-col justify-center items-center text-center px-4">
+        <div class="absolute inset-0 bg-pro-blue/80"></div>
+
+        <div class="relative z-10 max-w-4xl mx-auto">
+            <h1 class="text-5xl md:text-7xl font-bold mb-6 leading-tight bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-400">
+                Justice, Simplified.
+            </h1>
+            <p class="text-lg md:text-xl text-gray-300 mb-10 font-light max-w-2xl mx-auto">
+                Don't let legal jargon scare you. Type your problem below, and our AI will give you a clear roadmap in seconds.
+            </p>
+
+            <div class="glass p-2 rounded-2xl flex flex-col md:flex-row items-center gap-2 max-w-2xl mx-auto shadow-2xl animate-fade-in-up">
+                <input type="text" id="userInput" 
+                    class="w-full bg-transparent text-white placeholder-gray-400 px-6 py-4 outline-none text-lg"
+                    placeholder="E.g., My employer is refusing to pay my salary...">
+                
+                <button id="submitBtn" class="bg-pro-gold hover:bg-yellow-600 text-white px-8 py-4 rounded-xl font-bold text-lg transition-all shadow-lg flex items-center justify-center gap-2 w-full md:w-auto whitespace-nowrap">
+                    <span>Analyze</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" /></svg>
+                </button>
+            </div>
+        </div>
+    </main>
+
+    <div id="resultModal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4">
+        <div class="absolute inset-0 bg-black/70 backdrop-blur-sm" id="closeResultOverlay"></div>
+        
+        <div class="relative bg-white text-gray-800 w-full max-w-3xl rounded-2xl shadow-2xl overflow-hidden fade-in h-[80vh] flex flex-col">
+            <div class="bg-pro-blue p-6 flex justify-between items-center text-white shrink-0">
+                <div class="flex items-center gap-3">
+                    <div class="bg-pro-gold p-2 rounded-lg"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg></div>
+                    <h2 class="text-xl font-bold">Your Legal Roadmap</h2>
+                </div>
+                <button id="closeResultBtn" class="hover:bg-white/10 p-2 rounded-full transition"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg></button>
+            </div>
+
+            <div class="p-8 overflow-y-auto flex-grow bg-slate-50">
+                <div id="aiOutput" class="prose prose-lg max-w-none text-gray-700">
+                    </div>
+            </div>
+
+            <div class="p-4 bg-white border-t border-gray-200 text-center text-sm text-gray-500 shrink-0">
+                ⚠️ AI generated advice. Always consult a real lawyer for court proceedings.
+            </div>
+        </div>
+    </div>
+
+    <div id="loginModalBg" class="fixed inset-0 bg-black/60 z-50 hidden flex items-center justify-center backdrop-blur-sm">
+        <div class="bg-white rounded-2xl p-8 max-w-md w-full relative fade-in">
+            <button id="closeModalBtn" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600">✕</button>
+            <h3 class="text-2xl font-bold text-gray-900 mb-2 text-center">Welcome Back</h3>
+            <button id="googleSignInBtn" class="w-full flex items-center justify-center gap-3 bg-white border-2 border-gray-200 text-gray-700 font-semibold py-3 px-4 rounded-xl hover:bg-gray-50 mt-6">
+                <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" class="w-6 h-6">
+                <span>Continue with Google</span>
+            </button>
+        </div>
+    </div>
+
+    <script type="module" src="script.js"></script>
+</body>
+</html>
