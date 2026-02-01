@@ -1,6 +1,6 @@
 // config.js
 const CONFIG = {
-    GEMINI_API_KEY: "AIzaSyDcuBcTtTuMS_w7M_4HcXkgM6U7ze8mogQ",
+    GEMINI_API_KEY: "AIzaSyDAPnOQUK2B9OkTg6pY85tm-lCtRvbvIL4",
     FIREBASE_API_KEY: "AIzaSyD0g4Xc2KoshSSSZoHBQAvTZss4JzuZSQQ"
 };
 
