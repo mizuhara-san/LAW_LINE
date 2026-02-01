@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Dashboard - LAW LINE</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Outfit', 'sans-serif'] },
+                    colors: { primary: '#0D9488', accent: '#134E4A', dark: '#1e293b', light: '#f8fafc' }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-gray-50 text-dark min-h-screen">
+
+    <nav class="bg-white border-b border-gray-200 px-6 py-4 flex justify-between items-center sticky top-0 z-50">
+        <div class="flex items-center gap-3 cursor-pointer" onclick="window.location.href='index.html'">
+            <img src="logo.png" alt="Logo" class="w-10 h-10 object-contain">
+            <h1 class="text-xl font-bold text-primary">LAW LINE</h1>
+        </div>
+        <div class="flex items-center gap-4">
+            <span id="navUserName" class="hidden md:block font-medium text-gray-600">User</span>
+            <button id="logoutBtn" class="bg-red-50 text-red-600 px-4 py-2 rounded-lg text-sm font-bold hover:bg-red-100 transition">Log Out</button>
+        </div>
+    </nav>
+
+    <div class="max-w-6xl mx-auto p-6 grid grid-cols-1 lg:grid-cols-4 gap-8">
+        
+        <div class="lg:col-span-1">
+            <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 text-center">
+                <div class="w-24 h-24 mx-auto bg-primary/10 rounded-full flex items-center justify-center text-3xl mb-4 relative overflow-hidden">
+                    <img id="profilePic" src="" alt="" class="w-full h-full object-cover hidden">
+                    <span id="profileInitials" class="text-primary font-bold">U</span>
+                </div>
+                <h2 id="displayName" class="text-xl font-bold text-gray-800">Welcome</h2>
+                <p id="displayEmail" class="text-sm text-gray-500 break-words mb-4">...</p>
+                <div class="text-xs text-gray-400 border-t pt-4">
+                    Member since: <span id="joinDate">Loading...</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="lg:col-span-3">
+            <div class="bg-white rounded-xl p-2 shadow-sm border border-gray-100 inline-flex gap-2 mb-6">
+                <button onclick="switchTab('history')" id="tabHistory" class="px-6 py-2 rounded-lg text-sm font-bold bg-primary text-white shadow transition">Search History</button>
+                <button onclick="switchTab('downloads')" id="tabDownloads" class="px-6 py-2 rounded-lg text-sm font-bold text-gray-500 hover:bg-gray-50 transition">Downloads</button>
+            </div>
+
+            <div id="historySection" class="space-y-4">
+                <h3 class="text-lg font-bold text-gray-700 mb-4">Your Legal Inquiries</h3>
+                <div id="historyList" class="space-y-4">
+                    <div class="animate-pulse flex space-x-4">
+                        <div class="flex-1 space-y-4 py-1">
+                            <div class="h-4 bg-gray-200 rounded w-3/4"></div>
+                            <div class="space-y-2">
+                                <div class="h-4 bg-gray-200 rounded"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="downloadsSection" class="hidden text-center py-20">
+                <div class="bg-gray-100 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <svg class="w-10 h-10 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+                </div>
+                <h3 class="text-lg font-bold text-gray-600">No Downloads Yet</h3>
+                <p class="text-gray-500">Documents you generate or download will appear here.</p>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="script.js"></script>
+    <script>
+        // Simple Tab Switcher logic for Dashboard
+        function switchTab(tab) {
+            if (tab === 'history') {
+                document.getElementById('historySection').classList.remove('hidden');
+                document.getElementById('downloadsSection').classList.add('hidden');
+                document.getElementById('tabHistory').classList.add('bg-primary', 'text-white', 'shadow');
+                document.getElementById('tabHistory').classList.remove('text-gray-500');
+                document.getElementById('tabDownloads').classList.remove('bg-primary', 'text-white', 'shadow');
+                document.getElementById('tabDownloads').classList.add('text-gray-500');
+            } else {
+                document.getElementById('historySection').classList.add('hidden');
+                document.getElementById('downloadsSection').classList.remove('hidden');
+                document.getElementById('tabDownloads').classList.add('bg-primary', 'text-white', 'shadow');
+                document.getElementById('tabDownloads').classList.remove('text-gray-500');
+                document.getElementById('tabHistory').classList.remove('bg-primary', 'text-white', 'shadow');
+                document.getElementById('tabHistory').classList.add('text-gray-500');
+            }
+        }
+    </script>
+</body>
+</html>

@@ -24,11 +24,13 @@ import {
     orderBy, 
     getDocs 
 } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+import CONFIG from './config.js'; // Import the hidden keys
 
-const GEMINI_API_KEY = "AIzaSyBTfElNntpBK-9N0y_Y7TrckQTGIpRbp2A";
+// Use them like this:
+const GEMINI_API_KEY = CONFIG.GEMINI_API_KEY;
 
 const firebaseConfig = {
-    apiKey: "AIzaSyD0g4Xc2KoshSSSZoHBQAvTZss4JzuZSQQ",
+    apiKey: CONFIG.FIREBASE_API_KEY, // Use the config variable
     authDomain: "dev-hack2026.firebaseapp.com",
     projectId: "dev-hack2026",
     storageBucket: "dev-hack2026.firebasestorage.app",
