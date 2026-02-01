@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - LAW LINE</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Outfit', 'sans-serif'] },
+                    colors: {
+                        primary: '#0D9488',
+                        accent: '#134E4A',
+                        dark: '#1e293b',
+                        light: '#f8fafc'
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-light text-dark min-h-screen">
+
+    <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-gray-200 shadow-sm">
+        <div class="max-w-7xl mx-auto px-6 py-3 flex items-center">
+            <div class="flex-1 flex justify-start">
+                <nav class="hidden md:flex items-center gap-6 text-gray-700 font-medium">
+                    <a href="index.html" class="hover:text-primary transition">Home</a>
+                    <a href="about.html" class="hover:text-primary transition">About</a>
+                    <a href="contact.html" class="text-primary font-bold">Contact</a>
+                </nav>
+            </div>
+            <div class="shrink-0 flex items-center gap-3 cursor-pointer" onclick="window.location.href='index.html'">
+                <img src="logo.png" alt="LAW LINE Logo" class="w-14 h-14 object-contain">
+                <div>
+                    <h1 class="text-2xl font-bold text-primary leading-tight">LAW LINE</h1>
+                    <p class="text-[10px] text-gray-600 tracking-wide">Clarity over legal confusion.</p>
+                </div>
+            </div>
+            <div class="flex-1 flex justify-end" id="loginContainer">
+                <button id="openLoginBtn" class="bg-primary text-white px-5 py-2 rounded-full font-bold hover:bg-accent transition shadow-lg text-sm">Sign In</button>
+            </div>
+        </div>
+    </header>
+
+    <section class="bg-primary text-white py-16 text-center">
+        <h1 class="text-4xl font-bold mb-2">Get in Touch</h1>
+        <p class="text-primary-100 opacity-90">Have questions about the project? We'd love to hear from you.</p>
+    </section>
+
+    <section class="max-w-6xl mx-auto px-6 -mt-10 mb-20">
+        <div class="bg-white rounded-2xl shadow-xl overflow-hidden flex flex-col md:flex-row">
+            
+            <div class="md:w-1/3 bg-dark text-white p-10">
+                <h3 class="text-2xl font-bold mb-6">Contact Info</h3>
+                <div class="space-y-6">
+                    <div class="flex items-start gap-4">
+                        <div class="bg-white/10 p-3 rounded-lg"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg></div>
+                        <div>
+                            <p class="text-gray-400 text-sm">Email</p>
+                            <p class="font-medium">team@lawline.hackathon</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-4">
+                        <div class="bg-white/10 p-3 rounded-lg"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg></div>
+                        <div>
+                            <p class="text-gray-400 text-sm">Location</p>
+                            <p class="font-medium">Hackathon Venue, India</p>
+                        </div>
+                    </div>
+                    <div class="mt-12">
+                        <p class="text-gray-400 mb-4">Connect on Socials</p>
+                        <div class="flex gap-4">
+                            <a href="#" class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-primary transition">Github</a>
+                            <a href="#" class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-primary transition">X</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="md:w-2/3 p-10">
+                <form onsubmit="event.preventDefault(); alert('Message sent! (Demo)');">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                        <div>
+                            <label class="block text-gray-700 font-bold mb-2">First Name</label>
+                            <input type="text" class="w-full bg-gray-50 border border-gray-200 rounded-xl p-3 outline-none focus:border-primary" placeholder="John">
+                        </div>
+                        <div>
+                            <label class="block text-gray-700 font-bold mb-2">Last Name</label>
+                            <input type="text" class="w-full bg-gray-50 border border-gray-200 rounded-xl p-3 outline-none focus:border-primary" placeholder="Doe">
+                        </div>
+                    </div>
+                    <div class="mb-6">
+                        <label class="block text-gray-700 font-bold mb-2">Email Address</label>
+                        <input type="email" class="w-full bg-gray-50 border border-gray-200 rounded-xl p-3 outline-none focus:border-primary" placeholder="john@example.com">
+                    </div>
+                    <div class="mb-6">
+                        <label class="block text-gray-700 font-bold mb-2">Message</label>
+                        <textarea rows="4" class="w-full bg-gray-50 border border-gray-200 rounded-xl p-3 outline-none focus:border-primary" placeholder="How can we help?"></textarea>
+                    </div>
+                    <button class="bg-primary hover:bg-accent text-white font-bold py-3 px-8 rounded-xl transition shadow-lg">Send Message</button>
+                </form>
+            </div>
+
+        </div>
+    </section>
+
+    <div id="loginModalBg" class="fixed inset-0 bg-black/60 z-50 hidden flex items-center justify-center backdrop-blur-sm">
+        <div class="bg-white rounded-2xl p-8 max-w-md w-full relative">
+            <button id="closeModalBtn" class="absolute top-4 right-4 text-gray-400">✕</button>
+            <h3 class="text-2xl font-bold text-center mb-6">Join Law-Line</h3>
+            <div class="flex gap-4 mb-6 border-b"><button id="tabEmail" class="flex-1 pb-2 border-b-2 border-primary font-bold text-primary">Email</button><button id="tabPhone" class="flex-1 pb-2 text-gray-400">Phone</button></div>
+            <div id="emailSection" class="space-y-4"><input type="email" id="authEmail" placeholder="Email" class="w-full p-3 border rounded-xl"><input type="password" id="authPassword" placeholder="Password" class="w-full p-3 border rounded-xl"><button id="emailAuthBtn" class="w-full bg-primary text-white py-3 rounded-xl font-bold">Login</button></div>
+            <div id="phoneSection" class="hidden space-y-4"><div id="recaptcha-container"></div><input type="tel" id="phoneNumber" placeholder="+91..." class="w-full p-3 border rounded-xl"><button id="sendOtpBtn" class="w-full bg-primary text-white py-3 rounded-xl font-bold">Send OTP</button><div id="otpBox" class="hidden"><input id="otpCode" placeholder="OTP" class="w-full p-3 border rounded-xl"><button id="verifyOtpBtn" class="w-full bg-accent text-white py-3 rounded-xl">Verify</button></div></div>
+            <div class="mt-4 text-center"><button id="googleSignInBtn" class="w-full border py-3 rounded-xl flex justify-center gap-2"><img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" class="w-6"> Google</button></div>
+        </div>
+    </div>
+
+    <script type="module" src="script.js"></script>
+</body>
+</html>

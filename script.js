@@ -47,12 +47,28 @@ const googleProvider = new GoogleAuthProvider();
 document.addEventListener('DOMContentLoaded', () => {
     console.log("✅ App Started: DOM Fully Loaded");
 
-    // UI ELEMENTS
+    // UI ELEMENTS - Login
     const loginModalBg = document.getElementById('loginModalBg');
     const emailAuthBtn = document.getElementById('emailAuthBtn');
     const sendOtpBtn = document.getElementById('sendOtpBtn');
     const verifyOtpBtn = document.getElementById('verifyOtpBtn');
     const googleSignInBtn = document.getElementById('googleSignInBtn');
+
+    // UI ELEMENTS - Analyze Feature (NEW)
+    const submitBtn = document.getElementById('submitBtn');
+    const userInput = document.getElementById('userInput');
+    const fileInput = document.getElementById('fileInput');
+    const fileCount = document.getElementById('fileCount');
+    const resultModal = document.getElementById('resultModal');
+    const aiOutput = document.getElementById('aiOutput');
+
+    // --- FILE INPUT HANDLING (NEW) ---
+    if (fileInput) {
+        fileInput.addEventListener('change', () => {
+            const files = Array.from(fileInput.files);
+            if(fileCount) fileCount.textContent = files.length ? `(${files.length} attached)` : '';
+        });
+    }
 
     // --- TAB SWITCHING LOGIC ---
     const tabEmail = document.getElementById('tabEmail');
@@ -79,7 +95,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- BUTTON EVENT LISTENERS ---
+    // --- LOGIN BUTTON LISTENERS ---
 
     // 1. EMAIL LOGIN / SIGNUP
     if (emailAuthBtn) {
@@ -129,15 +145,20 @@ document.addEventListener('DOMContentLoaded', () => {
     // 3. PHONE OTP - SEND
     if (sendOtpBtn) {
         sendOtpBtn.addEventListener('click', async () => {
-            const phone = document.getElementById('phoneNumber').value;
-            if (!phone) return alert("Enter valid phone number (+91...)");
+            let phone = document.getElementById('phoneNumber').value.trim();
+            if (!phone) return alert("Enter valid phone number");
+
+            // Auto-format phone for India
+            if (!phone.startsWith('+')) {
+                phone = "+91" + phone;
+            }
 
             try {
                 sendOtpBtn.innerText = "Sending...";
                 window.confirmationResult = await signInWithPhoneNumber(auth, phone, window.recaptchaVerifier);
                 document.getElementById('otpBox').classList.remove('hidden');
                 sendOtpBtn.classList.add('hidden');
-                alert("OTP Sent!");
+                alert(`OTP Sent to ${phone}!`);
             } catch (error) {
                 console.error(error);
                 alert("SMS Error: " + error.message);
@@ -159,10 +180,54 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- GLOBAL BUTTONS (Close Modal, etc) ---
+    // --- ANALYZE BUTTON LOGIC (NEW) ---
+    if (submitBtn) {
+        submitBtn.addEventListener('click', async () => {
+            console.log("Analyze Button Clicked");
+            const text = userInput.value.trim();
+            const files = fileInput && fileInput.files ? Array.from(fileInput.files) : [];
+
+            if (!text && files.length === 0) return alert("Please describe your legal issue.");
+
+            const originalText = submitBtn.innerHTML;
+            submitBtn.innerHTML = `Analyzing...`;
+            submitBtn.disabled = true;
+
+            try {
+                // Call AI
+                const aiResponse = await callGeminiAI(text, files);
+                
+                // Show Result Modal
+                if (aiOutput) aiOutput.innerHTML = aiResponse;
+                if (resultModal) resultModal.classList.remove('hidden');
+
+                // Save to DB if logged in
+                const user = auth.currentUser;
+                if (user) {
+                    await saveToDatabase(text, aiResponse, user.uid);
+                }
+
+            } catch (error) {
+                console.error(error);
+                alert("AI Error: " + error.message);
+            } finally {
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+                userInput.value = '';
+                if(fileInput) fileInput.value = '';
+                if(fileCount) fileCount.textContent = '';
+            }
+        });
+    }
+
+    // --- GLOBAL MODAL CLOSERS ---
     document.getElementById('closeModalBtn')?.addEventListener('click', () => {
         loginModalBg.classList.add('hidden');
     });
+    
+    // Result Modal Closers (NEW)
+    document.getElementById('closeResultBtn')?.addEventListener('click', () => resultModal.classList.add('hidden'));
+    document.getElementById('closeResultOverlay')?.addEventListener('click', () => resultModal.classList.add('hidden'));
 
     // --- AUTH STATE MONITOR (UI Updates) ---
     onAuthStateChanged(auth, async (user) => {
@@ -177,7 +242,7 @@ document.addEventListener('DOMContentLoaded', () => {
             loginContainer.innerHTML = `
                 <div class="flex items-center gap-3">
                     <a href="dashboard.html" class="text-primary font-bold hover:underline text-sm mr-2 hidden md:block">My Dashboard</a>
-                     <img src="${user.photoURL || 'https://via.placeholder.com/40'}" class="w-8 h-8 rounded-full border border-gray-200">
+                     <img src="${user.photoURL || 'https://ui-avatars.com/api/?name=User'}" class="w-8 h-8 rounded-full border border-gray-200">
                     <button id="signOutBtn" class="bg-red-50 text-red-600 text-xs font-bold px-3 py-1 rounded-full hover:bg-red-100 transition">Sign Out</button>
                 </div>
             `;
@@ -195,7 +260,50 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-// --- HELPER: SAVE USER TO DB ---
+// ==========================================
+// 3. HELPER FUNCTIONS
+// ==========================================
+
+// AI Function (NEW)
+async function callGeminiAI(prompt, files) {
+    const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${GEMINI_API_KEY}`;
+    
+    // 1. Prepare Data
+    let parts = [{ text: `Act as a professional Indian Legal Advisor. HTML format. Issue: ${prompt}` }];
+
+    for (const file of files) {
+        if (file.type.startsWith('image/')) {
+            const base64 = await new Promise(r => { 
+                const reader = new FileReader(); 
+                reader.onloadend = () => r(reader.result.split(',')[1]); 
+                reader.readAsDataURL(file); 
+            });
+            parts.push({ inlineData: { data: base64, mimeType: file.type } });
+        }
+    }
+
+    // 2. Fetch from API
+    const response = await fetch(url, {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({ contents: [{ parts }] })
+    });
+
+    const data = await response.json();
+
+    // 3. Error Handling
+    if (data.error) {
+        throw new Error(data.error.message);
+    }
+    
+    if (data.candidates && data.candidates[0].content) {
+        return data.candidates[0].content.parts[0].text.replace(/```html/g, "").replace(/```/g, "").trim();
+    } else {
+        throw new Error("No response from AI.");
+    }
+}
+
+// Create/Update User in DB
 async function createUserProfile(user) {
     try {
         const userRef = doc(db, "users", user.uid);
@@ -209,5 +317,18 @@ async function createUserProfile(user) {
         }
     } catch(e) {
         console.error("DB Error", e);
+    }
+}
+
+// Save Search to History (NEW)
+async function saveToDatabase(query, response, userId) {
+    try {
+        await addDoc(collection(db, "users", userId, "history"), {
+            user_query: query,
+            ai_response: response,
+            timestamp: new Date()
+        });
+    } catch (e) {
+        console.error("Save Error:", e);
     }
 }
