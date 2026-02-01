@@ -1,6 +1,7 @@
 # ⚖️ Law-Line: AI-Powered Legal Awareness Platform https://lawline-ai.vercel.app/
 
-![Project Banner](https://images.unsplash.com/photo-1589829085413-56de8ae18c73?q=80&w=2000&auto=format&fit=crop)
+![Project Banner](
+<img width="1917" height="874" alt="image" src="https://github.com/user-attachments/assets/46d50e81-e6c9-4bd1-89a2-d47c7c69b886" />
 
 > **Clarity over legal confusion.** > *Bridging the gap between the Indian Constitution and the Common Man.*
 
